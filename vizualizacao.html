@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+m<!DOCTYPE HTML>
 <html>
 <head>
     <title> Simulação OpenLayers </title>
@@ -22,19 +22,40 @@
 	
     <script>
        map = null;
-       var markers = null;
+       //var markers = null;
+	<script type="text/javascript">
+	   var markers = new Array(icons/png/512/41/41831);
+  // markers.push(9, 5, 6);
+    document.write(markers);
+	
+	markers.push("icons/png/512/41/41831");
+	markers.push("icons/png/512/41/41831");
+	markers.push("icons/png/512/41/41831");
+
+
+
        lon = -35.470283;
        lat = -6.856759;
       function init() {
         map = new OpenLayers.Map("mapdiv");
         var mapnik = new OpenLayers.Layer.OSM();
         map.addLayer(mapnik);
-
-
       }
-
+	  
+	   class Localizacao {
+    constructor(longitude, latitude) {
+      this.longitude = longitude;
+      this.latitude = latitude;
+                }
+    get longi(){
+      return this.longitude;
+    }
+    get lati(){
+      return this.lati;
+    }
+              }
+			  
 	function exibeMensagem(){
-
 	var intervalo = window.setInterval(function() {
 	    // corpo da funcao
                 //alert('Vai na latitude');
@@ -44,7 +65,6 @@
 		    new OpenLayers.Projection("EPSG:4326"), // transform from WGS 1984
 		    new OpenLayers.Projection("EPSG:900913") // to Spherical Mercator
 		);
-
   //  https://static.thenounproject.com/png/156824-200.png
     if (markers != null){
       markers.destroy();
@@ -57,17 +77,10 @@
   //  markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon));
   //  markers.addMarker(new OpenLayers.Marker(new OpenLayers.LonLat(0,0),icon.clone()));
     marker = new OpenLayers.Marker(lonlat,icon);
-
 		markers.addMarker(marker);
  	       var zoom = 14;
 	       map.setCenter(lonlat, zoom);
-
-
 	}, 300);
-
-
-
-
 	//window.setTimeout(function() {
 	//    clearInterval(intervalo);
 	//}, 30000);
